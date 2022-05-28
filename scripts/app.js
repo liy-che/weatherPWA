@@ -1,109 +1,6 @@
 (function() {
   'use strict';
 
-  let injectedForecast = {
-    key: 'new+york',
-    label: 'New York, NY',
-    current: {
-      dt: 1453489481,
-      temp: 52.74,
-      feels_like: 74.34,
-      weather: [
-        {
-          description: 'Clear',
-          icon: '02d'
-        }
-      ],
-      humidity: 0.77,
-      wind_deg: 125,
-      wind_speed: 1.52
-    },
-    hourly: [
-      {
-        "pop": 0.2
-      }
-    ],
-    daily: [
-        {
-          "temp": {
-            "min": 34,
-            "max": 55,
-          },
-          "weather": [
-            {
-              "icon": "01d"
-            }
-          ]
-        },
-        {
-          "temp": {
-            "min": 34,
-            "max": 55,
-          },
-          "weather": [
-            {
-              "icon": "10d"
-            }
-          ]
-        },
-        {
-          "temp": {
-            "min": 34,
-            "max": 55,
-          },
-          "weather": [
-            {
-              "icon": "13d"
-            }
-          ]
-        },
-        {
-          "temp": {
-            "min": 34,
-            "max": 55,
-          },
-          "weather": [
-            {
-              "icon": "13d"
-            }
-          ]
-        },
-        {
-          "temp": {
-            "min": 34,
-            "max": 55,
-          },
-          "weather": [
-            {
-              "icon": "50d"
-            }
-          ]
-        },
-        {
-          "temp": {
-            "min": 34,
-            "max": 55,
-          },
-          "weather": [
-            {
-              "icon": "11d"
-            }
-          ]
-        },
-        {
-          "temp": {
-            "min": 34,
-            "max": 55,
-          },
-          "weather": [
-            {
-              "icon": "04d"
-            }
-          ]
-        }
-      ]
-  };
-
   let weatherAPIUrlBase = 'https://api.openweathermap.org/data/2.5/';
 
   let APIKey = '';
@@ -325,9 +222,11 @@
           });
         } else {
           // todo: get most up to date info of user local 
-          app.selectedCities = [{"key": injectedForecast.key, "label": injectedForecast.label}];
+          let defaultKey = 'new+york';
+          let defaultLabel = 'New York, NY';
+          app.selectedCities = [{"key": defaultKey, "label": defaultLabel}];
           app.saveSelectedCities();
-          app.updateForecastCard(injectedForecast);
+          app.getForecast(defaultKey, defaultLabel);
         }
     })
     .catch(function(err) { console.log(err); });
