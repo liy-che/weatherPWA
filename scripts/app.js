@@ -3,6 +3,8 @@
 
   let weatherAPIUrlBase = 'https://api.openweathermap.org/data/2.5/';
 
+  // fine with showing free tier api key for personal project
+  // can set up proxy server to hide if needed
   let APIKey = '';
 
   let app = {
